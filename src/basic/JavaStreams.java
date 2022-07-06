@@ -1,3 +1,7 @@
+package basic;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -9,24 +13,22 @@ public class JavaStreams {
     public static void main(String[] args) {
 
         try{
-            List<Integer> intList = readFromFile("src/file.txt");
+            List<Integer> intList = readFromFile("src/basic/file.txt");
             System.out.println("Integers list from file = " + intList);
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
     }
 
-    static List<Integer> readFromFile(String fileName) throws IOException{
+    public static List<Integer> readFromFile(String fileName) throws IOException{
 
         List<Integer> intList = new ArrayList<>();
         char[] charVal = new char[32];
-        try(Reader reader = Files.newBufferedReader(Paths.get(fileName))){
-            while(reader.read(charVal) >= 0){
-                for (char value: charVal) {
-                    if(Character.isDigit(value)){
-                        intList.add(Character.getNumericValue(value));
-                    }
-                }
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+            int val;
+            while ((val = br.read()) != -1) {
+                if(Character.isDigit(val))
+                    intList.add(Character.getNumericValue(val));
             }
         }
 

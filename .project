@@ -3,6 +3,14 @@
 	<name>Basic_Java_1</name>
 	<comment></comment>
 	<projects>
+	<dependencies>
+        <!-- Other dependencies-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+            </dependency>
+        </dependencies>
 	</projects>
 	<buildSpec>
 		<buildCommand>
